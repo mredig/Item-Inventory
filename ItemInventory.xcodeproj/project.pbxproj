@@ -19,6 +19,7 @@
 		3310FBF422A75C5D00A347AE /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310FBF222A75C5D00A347AE /* Item+CoreDataProperties.swift */; };
 		3310FBF622A75D4800A347AE /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310FBF522A75D4800A347AE /* ItemController.swift */; };
 		3310FBF822A7601900A347AE /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310FBF722A7601900A347AE /* ItemTableViewCell.swift */; };
+		3310FBFA22A7638B00A347AE /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310FBF922A7638B00A347AE /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		3310FBF222A75C5D00A347AE /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3310FBF522A75D4800A347AE /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		3310FBF722A7601900A347AE /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		3310FBF922A7638B00A347AE /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +94,7 @@
 				3310FBE522A7599200A347AE /* Models */,
 				3310FBE622A7599600A347AE /* Model Controllers */,
 				3310FBE422A7598F00A347AE /* Views */,
-				3310FBE222A7596E00A347AE /* View Controller */,
+				3310FBE222A7596E00A347AE /* View Controllers */,
 				3310FBE722A759A300A347AE /* Helpers */,
 				3310FBE322A7597C00A347AE /* Resources */,
 			);
@@ -108,12 +110,13 @@
 			path = ItemInventoryTests;
 			sourceTree = "<group>";
 		};
-		3310FBE222A7596E00A347AE /* View Controller */ = {
+		3310FBE222A7596E00A347AE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				3310FBC422A7551500A347AE /* InventoryTableViewController.swift */,
+				3310FBF922A7638B00A347AE /* ItemDetailViewController.swift */,
 			);
-			path = "View Controller";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		3310FBE322A7597C00A347AE /* Resources */ = {
@@ -290,6 +293,7 @@
 				3310FBF322A75C5D00A347AE /* Item+CoreDataClass.swift in Sources */,
 				3310FBEE22A75A3D00A347AE /* Item.xcdatamodeld in Sources */,
 				3310FBF822A7601900A347AE /* ItemTableViewCell.swift in Sources */,
+				3310FBFA22A7638B00A347AE /* ItemDetailViewController.swift in Sources */,
 				3310FBC522A7551500A347AE /* InventoryTableViewController.swift in Sources */,
 				3310FBEB22A75A2500A347AE /* CoreDataStack.swift in Sources */,
 				3310FBC322A7551500A347AE /* AppDelegate.swift in Sources */,

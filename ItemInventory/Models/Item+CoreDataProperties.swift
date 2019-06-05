@@ -17,11 +17,11 @@ extension Item {
         return NSFetchRequest<Item>(entityName: "Item")
     }
 
-    @NSManaged public var id: UUID
-    @NSManaged public var title: String
-    @NSManaged public var location: String
+    @NSManaged public var id: UUID?
+    @NSManaged public var title: String?
+    @NSManaged public var location: String?
     @NSManaged public var lent: Bool
     @NSManaged public var imageURI: URL?
-    @NSManaged public var itemDescription: String
+    @NSManaged public var itemDescription: String?
 
 }

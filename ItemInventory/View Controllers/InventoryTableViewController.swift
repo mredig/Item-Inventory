@@ -11,6 +11,8 @@ import CoreData
 
 class InventoryTableViewController: UITableViewController {
 
+	let itemController = ItemController()
+
 	lazy var fetchedResultsController: NSFetchedResultsController<Item> = {
 		let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
@@ -18,7 +20,7 @@ class InventoryTableViewController: UITableViewController {
 		let moc = CoreDataStack.shared.mainContext
 		let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
 																  managedObjectContext: moc,
-																  sectionNameKeyPath: nil,
+																  sectionNameKeyPath: "title",
 																  cacheName: nil)
 		fetchedResultsController.delegate = self
 		do {
@@ -28,6 +30,21 @@ class InventoryTableViewController: UITableViewController {
 		}
 		return fetchedResultsController
 	}()
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let dest = segue.destination as? ItemDetailViewController {
+			dest.itemController = itemController
+			if segue.identifier == "ShowItemSegue" {
+				guard let indexPath = tableView.indexPathForSelectedRow else { return }
+				dest.item = fetchedResultsController.object(at: indexPath)
+			}
+		}
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.reloadData()
+	}
 }
 
 // MARK: - TableView Stuff
