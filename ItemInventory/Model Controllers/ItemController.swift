@@ -1,5 +1,5 @@
 //
-//  Item+Convenience.swift
+//  ItemController.swift
 //  ItemInventory
 //
 //  Created by Michael Redig on 6/4/19.
@@ -8,6 +8,7 @@
 
 import Foundation
 
-extension Item {
-//	convenience init
+
+class ItemController {
+	
 }
