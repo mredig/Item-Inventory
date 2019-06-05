@@ -44,7 +44,7 @@ class ItemDetailViewController: UIViewController {
 		if let item = item {
 			itemController?.update(item: item, title: title, location: location, description: description, lent: lentSwitch.isOn, imageURI: nil)
 		} else {
-			_ = Item(title: title, location: location, description: description, lent: lentSwitch.isOn, imageURL: nil)
+			itemController?.createItem(title: title, location: location, description: description, lent: lentSwitch.isOn, imageURI: nil)
 		}
 
 		navigationController?.popViewController(animated: true)

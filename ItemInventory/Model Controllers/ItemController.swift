@@ -14,12 +14,8 @@ class ItemController {
 	@discardableResult func createItem(title: String, location: String, description: String, lent: Bool, imageURI: URL?) -> Item {
 		let item = Item(title: title, location: location, description: description, lent: lent, imageURL: imageURI)
 		guard let context = item.managedObjectContext else { return item }
-//		try? CoreDataStack.shared.save(context: context)
-		do {
-			try CoreDataStack.shared.save(context: context)
-		} catch {
-			NSLog("error: \(error)")
-		}
+		try? CoreDataStack.shared.save(context: context)
+
 		return item
 	}
 
