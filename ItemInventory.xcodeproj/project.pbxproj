@@ -13,6 +13,9 @@
 		3310FBCA22A7551600A347AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3310FBC922A7551600A347AE /* Assets.xcassets */; };
 		3310FBCD22A7551600A347AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3310FBCB22A7551600A347AE /* LaunchScreen.storyboard */; };
 		3310FBD822A7551600A347AE /* ItemInventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310FBD722A7551600A347AE /* ItemInventoryTests.swift */; };
+		3310FBEB22A75A2500A347AE /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310FBEA22A75A2500A347AE /* File.swift */; };
+		3310FBEE22A75A3D00A347AE /* Item.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3310FBEC22A75A3D00A347AE /* Item.xcdatamodeld */; };
+		3310FBF022A75AF800A347AE /* Item+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310FBEF22A75AF800A347AE /* Item+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		3310FBD322A7551600A347AE /* ItemInventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ItemInventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3310FBD722A7551600A347AE /* ItemInventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInventoryTests.swift; sourceTree = "<group>"; };
 		3310FBD922A7551600A347AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3310FBEA22A75A2500A347AE /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		3310FBED22A75A3D00A347AE /* Item.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Item.xcdatamodel; sourceTree = "<group>"; };
+		3310FBEF22A75AF800A347AE /* Item+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +83,12 @@
 		3310FBC122A7551500A347AE /* ItemInventory */ = {
 			isa = PBXGroup;
 			children = (
-				3310FBC222A7551500A347AE /* AppDelegate.swift */,
-				3310FBC422A7551500A347AE /* InventoryTableViewController.swift */,
-				3310FBC622A7551500A347AE /* Main.storyboard */,
-				3310FBC922A7551600A347AE /* Assets.xcassets */,
-				3310FBCB22A7551600A347AE /* LaunchScreen.storyboard */,
-				3310FBCE22A7551600A347AE /* Info.plist */,
+				3310FBE522A7599200A347AE /* Models */,
+				3310FBE622A7599600A347AE /* Model Controllers */,
+				3310FBE422A7598F00A347AE /* Views */,
+				3310FBE222A7596E00A347AE /* View Controller */,
+				3310FBE722A759A300A347AE /* Helpers */,
+				3310FBE322A7597C00A347AE /* Resources */,
 			);
 			path = ItemInventory;
 			sourceTree = "<group>";
@@ -96,6 +102,57 @@
 			path = ItemInventoryTests;
 			sourceTree = "<group>";
 		};
+		3310FBE222A7596E00A347AE /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3310FBC422A7551500A347AE /* InventoryTableViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		3310FBE322A7597C00A347AE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3310FBC222A7551500A347AE /* AppDelegate.swift */,
+				3310FBC622A7551500A347AE /* Main.storyboard */,
+				3310FBC922A7551600A347AE /* Assets.xcassets */,
+				3310FBCB22A7551600A347AE /* LaunchScreen.storyboard */,
+				3310FBCE22A7551600A347AE /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3310FBE422A7598F00A347AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3310FBE522A7599200A347AE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3310FBEC22A75A3D00A347AE /* Item.xcdatamodeld */,
+				3310FBEF22A75AF800A347AE /* Item+Convenience.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3310FBE622A7599600A347AE /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		3310FBE722A759A300A347AE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3310FBEA22A75A2500A347AE /* File.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +163,7 @@
 				3310FBBB22A7551500A347AE /* Sources */,
 				3310FBBC22A7551500A347AE /* Frameworks */,
 				3310FBBD22A7551500A347AE /* Resources */,
+				3310FBE822A759E800A347AE /* Run Script - Build Increment */,
 			);
 			buildRules = (
 			);
@@ -192,12 +250,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3310FBE822A759E800A347AE /* Run Script - Build Increment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Build Increment";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbN=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbN=$((bN += 1))\nbN=$(printf \"%d\" $bN)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $bN\" \"$INFOPLIST_FILE\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3310FBBB22A7551500A347AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3310FBEE22A75A3D00A347AE /* Item.xcdatamodeld in Sources */,
+				3310FBF022A75AF800A347AE /* Item+Convenience.swift in Sources */,
 				3310FBC522A7551500A347AE /* InventoryTableViewController.swift in Sources */,
+				3310FBEB22A75A2500A347AE /* File.swift in Sources */,
 				3310FBC322A7551500A347AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +444,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L5UZAT7KA9;
-				INFOPLIST_FILE = ItemInventory/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ItemInventory/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,7 +463,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L5UZAT7KA9;
-				INFOPLIST_FILE = ItemInventory/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ItemInventory/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,6 +549,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3310FBEC22A75A3D00A347AE /* Item.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3310FBED22A75A3D00A347AE /* Item.xcdatamodel */,
+			);
+			currentVersion = 3310FBED22A75A3D00A347AE /* Item.xcdatamodel */;
+			path = Item.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3310FBB722A7551500A347AE /* Project object */;
 }
