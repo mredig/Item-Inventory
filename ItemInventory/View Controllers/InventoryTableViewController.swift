@@ -47,6 +47,13 @@ extension InventoryTableViewController {
 		itemCell.item = itemController.items[indexPath.row]
 		return itemCell
 	}
+
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			let item = itemController.items[indexPath.row]
+			itemController.delete(items: [item])
+		}
+	}
 }
 
 extension UITableView {

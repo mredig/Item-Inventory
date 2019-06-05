@@ -46,6 +46,16 @@ class ItemController {
 		}
 	}
 
+	func delete(items: [Item]) {
+		do {
+			try realm.write {
+				realm.delete(items)
+			}
+		} catch {
+			NSLog("Error deleting objects: \(error)")
+		}
+	}
+
 	func save(items: [Item]) {
 		do {
 			try realm.write {
