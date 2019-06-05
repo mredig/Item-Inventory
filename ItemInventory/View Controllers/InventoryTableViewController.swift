@@ -7,111 +7,62 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class InventoryTableViewController: UITableViewController {
 
 	let itemController = ItemController()
+	var token: NotificationToken?
 
-	lazy var fetchedResultsController: NSFetchedResultsController<Item> = {
-		let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 
-		let moc = CoreDataStack.shared.mainContext
-		let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-																  managedObjectContext: moc,
-																  sectionNameKeyPath: "title",
-																  cacheName: nil)
-		fetchedResultsController.delegate = self
-		do {
-			try fetchedResultsController.performFetch()
-		} catch {
-			print("error performing initial fetch for frc: \(error)")
-		}
-		return fetchedResultsController
-	}()
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		token = itemController.items.observe(tableView.applyChanges)
+	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let dest = segue.destination as? ItemDetailViewController {
 			dest.itemController = itemController
 			if segue.identifier == "ShowItemSegue" {
 				guard let indexPath = tableView.indexPathForSelectedRow else { return }
-				dest.item = fetchedResultsController.object(at: indexPath)
+				dest.item = itemController.items[indexPath.row]
 			}
 		}
-	}
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		tableView.reloadData()
 	}
 }
 
 // MARK: - TableView Stuff
 extension InventoryTableViewController {
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		return fetchedResultsController.sections?.count ?? 0
-	}
-
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+		return itemController.items.count
 	}
 
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return fetchedResultsController.sections?[section].indexTitle
+		return nil
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		guard let itemCell = cell as? ItemTableViewCell else { return cell }
-		itemCell.item = fetchedResultsController.object(at: indexPath)
+		itemCell.item = itemController.items[indexPath.row]
 		return itemCell
 	}
 }
 
+extension UITableView {
+	func applyChanges<T>(changes: RealmCollectionChange<T>) {
+		switch changes {
+		case .initial: reloadData()
+		case .update(_, let deletions, let insertions, let updates):
+			let fromRow = {(row: Int) in
+				return IndexPath(row: row, section: 0)}
 
-// MARK: - Fetched Results Controller Delegate
-extension InventoryTableViewController: NSFetchedResultsControllerDelegate {
-	func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		tableView.beginUpdates()
-	}
-
-	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		tableView.endUpdates()
-	}
-
-	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-		let indexSet = IndexSet([sectionIndex])
-		switch type {
-		case .insert:
-			tableView.insertSections(indexSet, with: .automatic)
-		case .delete:
-			tableView.deleteSections(indexSet, with: .automatic)
-		default:
-			print(#line, #file, "unexpected NSFetchedResultsChangeType: \(type)")
+			beginUpdates()
+			deleteRows(at: deletions.map(fromRow), with: .automatic)
+			insertRows(at: insertions.map(fromRow), with: .automatic)
+			reloadRows(at: updates.map(fromRow), with: .none)
+			endUpdates()
+		default: break
 		}
-	}
-
-	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-		switch type {
-		case .insert:
-			guard let newIndexPath = newIndexPath else { return }
-			tableView.insertRows(at: [newIndexPath], with: .automatic)
-		case .move:
-			guard let newIndexPath = newIndexPath, let indexPath = indexPath else { return }
-			tableView.moveRow(at: indexPath, to: newIndexPath)
-		case .update:
-			guard let indexPath = indexPath else { return }
-			tableView.reloadRows(at: [indexPath], with: .automatic)
-		case .delete:
-			guard let indexPath = indexPath else { return }
-			tableView.deleteRows(at: [indexPath], with: .automatic)
-		@unknown default:
-			print(#line, #file, "unknown NSFetchedResultsChangeType: \(type)")
-		}
-	}
-
-	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, sectionIndexTitleForSectionName sectionName: String) -> String? {
-		return nil
 	}
 }
