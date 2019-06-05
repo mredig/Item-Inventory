@@ -20,6 +20,7 @@
 		33D459CE22A782A9002FDF4E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D459CC22A782A9002FDF4E /* RealmSwift.framework */; };
 		33D459CF22A782A9002FDF4E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D459CD22A782A9002FDF4E /* Realm.framework */; };
 		33D459D122A7830B002FDF4E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D459D022A7830B002FDF4E /* Item.swift */; };
+		33D459D322A79164002FDF4E /* UITableView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D459D222A79164002FDF4E /* UITableView+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		33D459CC22A782A9002FDF4E /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		33D459CD22A782A9002FDF4E /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		33D459D022A7830B002FDF4E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		33D459D222A79164002FDF4E /* UITableView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		3310FBE722A759A300A347AE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				33D459D222A79164002FDF4E /* UITableView+Helper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				3310FBF822A7601900A347AE /* ItemTableViewCell.swift in Sources */,
 				3310FBFA22A7638B00A347AE /* ItemDetailViewController.swift in Sources */,
 				3310FBC522A7551500A347AE /* InventoryTableViewController.swift in Sources */,
+				33D459D322A79164002FDF4E /* UITableView+Helper.swift in Sources */,
 				3310FBC322A7551500A347AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
